@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-mvn clean package -Pnative -DskipTests
+mvn clean package -Pnative -DskipTests -H:ReflectionConfigurationFiles=src/main/resources/reflection-guice.json
