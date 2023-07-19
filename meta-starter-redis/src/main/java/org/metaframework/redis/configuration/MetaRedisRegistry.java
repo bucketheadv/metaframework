@@ -79,6 +79,7 @@ public class MetaRedisRegistry implements BeanDefinitionRegistryPostProcessor {
 
             BeanDefinition jedisTemplateBeanDefinition = BeanDefinitionBuilder.rootBeanDefinition(DefaultJedisTemplate.class)
                     .setPrimary(isPrimary)
+                    .addConstructorArgValue(templateName)
                     .addConstructorArgReference(jedisPoolBeanName)
                     .getBeanDefinition();
             String jedisTemplateBeanName = templateName + JedisTemplate.class.getSimpleName();
