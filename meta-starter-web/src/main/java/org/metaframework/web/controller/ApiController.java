@@ -1,5 +1,6 @@
 package org.metaframework.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.metaframework.web.dao.mapper.UserMapper;
 import org.metaframework.web.prop.BlackListProperties;
 import org.metaframework.web.service.UserService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author sven
  * Created on 2023/7/15 3:54 PM
  */
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class ApiController {

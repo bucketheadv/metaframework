@@ -18,10 +18,12 @@
 		<module>meta-starter-apollo</module>
 		<module>meta-starter-mybatis</module>
 		<module>meta-starter-web</module>
+		<module>meta-starter-core</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>
 		<apollo.version>2.1.0</apollo.version>
+		<meta.version>0.0.1-SNAPSHOT</meta.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,6 +53,22 @@
 				<groupId>com.ctrip.framework.apollo</groupId>
 				<artifactId>apollo-client</artifactId>
 				<version>${apollo.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.metaframework</groupId>
+				<artifactId>meta-starter-apollo</artifactId>
+				<version>${meta.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.metaframework</groupId>
+				<artifactId>meta-starter-core</artifactId>
+				<version>${meta.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.metaframework</groupId>
+				<artifactId>meta-starter-mybatis</artifactId>
+				<version>${meta.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
