@@ -26,6 +26,11 @@
             <artifactId>meta-starter-mybatis</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.metaframework</groupId>
+            <artifactId>meta-starter-redis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

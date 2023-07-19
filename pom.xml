@@ -19,6 +19,7 @@
 		<module>meta-starter-mybatis</module>
 		<module>meta-starter-web</module>
 		<module>meta-starter-core</module>
+		<module>meta-starter-redis</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>

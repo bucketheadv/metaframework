@@ -1,6 +1,7 @@
 package org.metaframework.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.metaframework.redis.client.JedisTemplate;
 import org.metaframework.web.dao.mapper.UserMapper;
 import org.metaframework.web.prop.BlackListProperties;
 import org.metaframework.web.service.UserService;
@@ -26,6 +27,8 @@ public class ApiController {
     private BlackListProperties blackListProperties;
     @Autowired
     private UserService userService;
+    @Autowired
+    private JedisTemplate jedisTemplate;
 
     @GetMapping("/test")
     public Object test(Long id) {
@@ -35,5 +38,11 @@ public class ApiController {
     @GetMapping("/ok")
     public Object ok(String name) {
         return "OK:" + value + ":" + userService.sayHello(name) + ":" + blackListProperties.getUsers();
+    }
+
+    @GetMapping("/testRedis")
+    public Object testRedis(String key, String value) {
+        jedisTemplate.set(key, value);
+        return "OK: " + jedisTemplate.get(key);
     }
 }
