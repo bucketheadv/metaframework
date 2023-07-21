@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import redis.clients.jedis.params.SetParams;
 
 /**
  * @author sven
@@ -42,7 +43,7 @@ public class ApiController {
 
     @GetMapping("/testRedis")
     public Object testRedis(String key, String value) {
-        jedisTemplate.set(key, value);
+        jedisTemplate.set(key, value, SetParams.setParams().ex(10).nx());
         return "OK: " + jedisTemplate.get(key);
     }
 }

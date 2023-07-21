@@ -1,5 +1,6 @@
 package org.metaframework.redis.configuration;
 
+import com.google.common.base.CaseFormat;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.metaframework.redis.client.JedisTemplate;
@@ -68,6 +69,9 @@ public class MetaRedisRegistry implements BeanDefinitionRegistryPostProcessor {
             String clientConfigBeanName = templateName + JedisClientConfig.class.getSimpleName();
             registry.registerBeanDefinition(clientConfigBeanName, clientConfigBeanDefinition);
 
+            templateName = templateName.replaceAll("-", "_");
+            templateName = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, templateName);
+
             BeanDefinition jedisPoolBeanDefinition = BeanDefinitionBuilder.rootBeanDefinition(JedisPool.class)
                     .setPrimary(isPrimary)
                     .addConstructorArgReference(jedisPoolConfigBeanName)
@@ -84,9 +88,9 @@ public class MetaRedisRegistry implements BeanDefinitionRegistryPostProcessor {
                     .getBeanDefinition();
             String jedisTemplateBeanName = templateName + JedisTemplate.class.getSimpleName();
             registry.registerBeanDefinition(jedisTemplateBeanName, jedisTemplateBeanDefinition);
-            log.info("注册Bean: {}", jedisTemplateBeanName);
+            log.info("注册RedisBean: [{}], DB: {}", jedisTemplateBeanName, redisNode.getDb());
             if (isPrimary) {
-                log.info("Bean: {} 被设置为Primary", jedisTemplateBeanName);
+                log.info("RedisBean: [{}] 被设置为默认实例", jedisTemplateBeanName);
             }
         }
     }
