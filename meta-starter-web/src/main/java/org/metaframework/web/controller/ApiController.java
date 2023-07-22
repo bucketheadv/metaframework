@@ -6,6 +6,7 @@ import org.metaframework.web.dao.mapper.UserMapper;
 import org.metaframework.web.prop.BlackListProperties;
 import org.metaframework.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class ApiController {
     @Autowired
     private UserService userService;
     @Autowired
+    @Qualifier("mainJedisTemplate")
     private JedisTemplate jedisTemplate;
 
     @GetMapping("/test")
